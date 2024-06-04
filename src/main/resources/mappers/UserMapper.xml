@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.todolist1.user.UserMapper">
+    <insert id="insUser" keyProperty="userSeq" useGeneratedKeys="true">
+        INSERT INTO user_master
+        SET user_id = #{userId}
+        , user_pw = #{userPw}
+        , user_name = #{userName}
+        , user_email = #{userEmail}
+        , user_login_gb = #{userLoginGb}
+    </insert>
+
+    <select id="signInUser">
+        SELECT user_id AS userId
+                , user_pw AS userPw
+                , user_name AS userName
+                , user_email AS userEmail
+                , user_login_gb AS userLoginGb
+                , input_dt AS inputDt
+                , update_dt AS updateDt
+        FROM user_master
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="selUserList">
+        SELECT user_seq AS userEsq, user_id AS userId, user_name AS userName
+        FROM user_master
+    </select>
+
+    <select id="countUserId">
+        SELECT COUNT(*)
+        FROM user_master
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="countUserName">
+        SELECT COUNT(*)
+        FROM user_master
+        WHERE user_name = #{userName}
+    </select>
+
+</mapper>

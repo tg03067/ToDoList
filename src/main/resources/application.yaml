@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: ToDoList1
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mariadb://localhost:3306/todolist
+    username: root
+    password: green502
+  servlet:
+    multipart:
+      max-file-size: 5MB
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: dlwhdalsWkdWKdaos@gmail.com
+    password: 1q2w3e4r!@
+    properties:
+      debug: true
+      smtp:
+        connection timeout: 5000
+        startle:
+          enable: true
+          required: true
+        auth: false
+
+mybatis:
+  mapper-locations: mappers/**/*.xml
+
+springdoc:
+  api-docs:
+    version: openapi_3_1
+  swagger-ui:
+    path: /swagger
+    operations-sorter: method
+    default-model-expand-depth: 10
+    display-request-duration: true
+  cache:
+    disabled: true
+
+server:
+  port: 8080
+
+file:
+  dir: D:\download\greengram_tdd\
