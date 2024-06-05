@@ -12,16 +12,15 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: dlwhdalsWkdWKdaos@gmail.com
-    password: 1q2w3e4r!@
+    username: whdalsWkdWKdaos@gmail.com
+    password: jftvyhtwfcuotfqw
     properties:
-      debug: true
-      smtp:
-        connection timeout: 5000
-        startle:
-          enable: true
-          required: true
-        auth: false
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
 
 mybatis:
   mapper-locations: mappers/**/*.xml

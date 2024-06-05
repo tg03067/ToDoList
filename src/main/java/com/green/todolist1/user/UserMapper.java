@@ -12,7 +12,6 @@ import java.util.List;
 public interface UserMapper {
     int insUser(UserPostReq p);
     UserInfo signInUser(String userId);
-    List<UserInfo> selUserList();
     int countUserId(String userId);
     int countUserName(String userName);
 }

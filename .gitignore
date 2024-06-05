@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### my ignore ###
+*.yaml
+git rm --cached path/to/yourfile.yaml

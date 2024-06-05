@@ -13,10 +13,8 @@ public class SchedulePostReq {
     private String scdEndDt;
     private String scdStartTime;
     private String scdEndTime;
-    private String scdTitle;
-    private String scdText;
-    private String location;
-
     @Schema(description = "1: 물주기, 2: 분갈이하기, 3: 가지치기, 4: 환기하기")
     private String gardening;
+
+    private String plantInfo;
 }
