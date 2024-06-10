@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.todolist1.schedule.plant.SchedulePlantMapper">
+
+    <insert id="insSchedule" keyProperty="plantSeq" useGeneratedKeys="true">
+        INSERT INTO plant_master (
+            plant_user_seq
+            , plant_etc
+            , plant_nickname
+            , plant_odata_seq
+        )
+        VALUES (
+            #{userSeq}
+            , #{etc}
+            , #{plantNickName}
+            , #{odataSeq}
+        )
+    </insert>
+
+    <update id="updateSchedule">
+        UPDATE plant_master
+        SET plant_nickname = #{plantNickName}
+        , plant_etc = #{etc}
+        WHERE plant_user_seq = #{userSeq}
+          AND plant_seq = #{plantSeq}
+    </update>
+
+    <delete id="deleteSchedule">
+        DELETE FROM plant_master
+        WHERE plant_user_seq = #{userSeq}
+          AND plant_seq = #{plantSeq}
+    </delete>
+
+    <select id="getSchedulePlantsList">
+        SELECT A.plant_nickname AS plantNickName, B.odata_image AS plantPic, B.odata_name AS plantName,
+               CEIL(COUNT(*) OVER() / #{size}) AS totalPage, COUNT(*) OVER() AS totalElement
+        FROM plant_master A
+        INNER JOIN opendata B
+        ON A.plant_odata_seq = B.odata_seq
+        WHERE plant_user_seq = #{userSeq}
+        ORDER BY A.plant_seq
+        LIMIT #{startIdx}, #{size}
+    </select>
+
+</mapper>
